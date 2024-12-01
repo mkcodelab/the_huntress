@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0q0m4nlocwh"]
+
+[ext_resource type="Texture2D" uid="uid://dtk15vjxig585" path="res://assets/rocks/#08.png" id="1_25evu"]
+
+[node name="MossyRock_01" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_25evu")

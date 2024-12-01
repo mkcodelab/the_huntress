@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgk03qhnou3l7"]
+
+[ext_resource type="PackedScene" uid="uid://0q0m4nlocwh" path="res://object_scenes/rocks/mossy_rock_01.tscn" id="1_5m081"]
+
+[node name="Static_Rock_01" type="StaticBody2D"]
+
+[node name="MossyRock_01" parent="." instance=ExtResource("1_5m081")]
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(5, 24, 35, 21, 56, 9, 80, 8, 135, 25, 192, 42, 192, 82, 203, 93, 202, 125, 193, 147, 99, 193, 75, 193, 60, 182, 23, 175, 2, 138)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgkk5tmp3klvq"]
+
+[ext_resource type="Texture2D" uid="uid://dtyefmlecv60i" path="res://assets/terrain/ground.png" id="1_3y3i4"]
+
+[node name="Terrain_01" type="StaticBody2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+size_flags_horizontal = 4
+texture = ExtResource("1_3y3i4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.217104, 0.153316, 0.0410853, 1)
+polygon = PackedVector2Array(-793, -204, 109, 77, 175, 92, 318, 71, 452, 26, 528, 52, 736, 115, 943, 120, 1121, 50, 1223, -24, 1325, -92, 1441, -69, 1497, 38, 1675, 259, 1746, 265, 1896, 228, 1944, 137, 2086, 54, 2334, -71, 2451, -116, 2537, -154, 2809, -114, 3073, -47, 3292, 30, 4154, -208, 4458, -396, 5118, -232, 4454, 48, 4290, 468, 3023, 520, 6, 553, -337, 228)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-797, -212, 110, 74, 177, 92, 321, 72, 451, 25, 725, 108, 952, 117, 1114, 54, 1320, -92, 1444, -67, 1495, 36, 1663, 244, 1747, 261, 1889, 231, 1942, 133, 2518, -152, 2874, -96, 3298, 24, 4130, -208, 4462, -400, 5110, -228, 4450, 44, 4270, 460, 2, 550)

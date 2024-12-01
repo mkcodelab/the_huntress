@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkvj4vqnmqwp0"]
+
+[ext_resource type="Texture2D" uid="uid://b3lee8tf2pmsa" path="res://assets/backgrounds/Starfield-7.png" id="1_2mkmi"]
+[ext_resource type="Texture2D" uid="uid://dr4n1hg73l0ek" path="res://assets/backgrounds/jungle_background___pixel_by_provellone_dekbrep-fullview.jpg" id="2_c8s7w"]
+[ext_resource type="PackedScene" uid="uid://cgkk5tmp3klvq" path="res://terrains/terrain_01.tscn" id="2_weihb"]
+[ext_resource type="PackedScene" uid="uid://lkt63va8qdkw" path="res://terrains/terrain_ledge.tscn" id="3_81oqh"]
+[ext_resource type="AudioStream" uid="uid://phlx3oh0xfvd" path="res://assets/audio/AmbientNatureBirdsWater01.wav" id="4_6lb8r"]
+[ext_resource type="PackedScene" uid="uid://bgsqw0hc1tm4n" path="res://object_scenes/plants/tree_1.tscn" id="5_seqa0"]
+[ext_resource type="PackedScene" uid="uid://doo8hn2phq8fw" path="res://object_scenes/plants/tree_2.tscn" id="6_jyosb"]
+[ext_resource type="PackedScene" uid="uid://0q0m4nlocwh" path="res://object_scenes/rocks/mossy_rock_01.tscn" id="7_se34i"]
+[ext_resource type="PackedScene" uid="uid://cgk03qhnou3l7" path="res://object_scenes/static_bodies/rocks/static_rock_01.tscn" id="8_63v17"]
+
+[node name="Level1" type="Node"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_offset = Vector2(5, 5)
+
+[node name="BG" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
+offset_right = 3000.0
+offset_bottom = 2600.0
+texture = ExtResource("1_2mkmi")
+
+[node name="Jungle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-173, 24)
+scale = Vector2(2, 2)
+texture = ExtResource("2_c8s7w")
+centered = false
+
+[node name="Terrain_02" parent="." instance=ExtResource("2_weihb")]
+position = Vector2(7, 2076)
+
+[node name="TerrainLedge" parent="." instance=ExtResource("3_81oqh")]
+position = Vector2(3140, 1534)
+
+[node name="TerrainLedge2" parent="." instance=ExtResource("3_81oqh")]
+position = Vector2(2324, 1220)
+rotation = 0.315267
+
+[node name="TerrainLedge3" parent="." instance=ExtResource("3_81oqh")]
+position = Vector2(2485, 1180)
+rotation = 2.81119
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6lb8r")
+volume_db = -5.0
+autoplay = true
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="Tree1" parent="Trees" instance=ExtResource("5_seqa0")]
+position = Vector2(1063, 1201)
+scale = Vector2(3.23717, 2.87136)
+
+[node name="Tree1_02" parent="Trees" instance=ExtResource("5_seqa0")]
+position = Vector2(600, 1547)
+scale = Vector2(2.44914, 2.29856)
+
+[node name="Tree2_01" parent="Trees" instance=ExtResource("6_jyosb")]
+position = Vector2(2840, 1370)
+scale = Vector2(1.80363, 1.92619)
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="MossyRock_01" parent="Rocks" instance=ExtResource("7_se34i")]
+position = Vector2(103, 2010)
+scale = Vector2(0.208393, 0.206407)
+
+[node name="Static_Rock_01" parent="Rocks" instance=ExtResource("8_63v17")]
+position = Vector2(2594, 1974)
+rotation = -1.48782

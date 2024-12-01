@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://lkt63va8qdkw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eyk2n"]
+seed = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t51fj"]
+noise = SubResource("FastNoiseLite_eyk2n")
+
+[node name="TerrainLedge" type="StaticBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_filter = 1
+texture_repeat = 3
+color = Color(0.0913477, 0.318841, 1.44392e-07, 1)
+texture = SubResource("NoiseTexture2D_t51fj")
+polygon = PackedVector2Array(13, -2, 192, 25, 410, 31, 583, 20, 681, 0, 708, 14, 691, 64, 561, 133, 456, 167, 189, 185, 39, 84, -8, 35)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(12, -1, 195, 25, 410, 31, 588, 20, 682, 0, 708, 13, 692, 64, 561, 133, 459, 168, 344, 177, 189, 185, 40, 86, -6, 37)
