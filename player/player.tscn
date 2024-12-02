@@ -544,6 +544,8 @@ script = ExtResource("24_mbqs2")
 [node name="Bow" parent="WeaponsManager" instance=ExtResource("24_gk8cw")]
 position = Vector2(2, -13)
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="has_landed_signal" from="StateMachine" to="." method="_on_state_machine_has_landed_signal"]
 [connection signal="has_landed_signal" from="StateMachine" to="Variables" method="reset_jump_velocity"]

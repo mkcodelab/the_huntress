@@ -15,11 +15,11 @@ var weapon_selected: WEAPONS
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("weapon_01"):
 		weapon_selected = WEAPONS.SPEAR
-		#Input.set_custom_mouse_cursor()
+		Input.set_custom_mouse_cursor(preload("res://assets/cursor/spearpoint.png"))
 		bow.visible = false
 	if Input.is_action_just_pressed("weapon_02"):
 		weapon_selected = WEAPONS.BOW
-		#Input.set_custom_mouse_cursor(preload("res://assets/particles/dust_particle.png"))
+		Input.set_custom_mouse_cursor(preload("res://assets/cursor/crosshair_01.png"))
 		bow.visible = true
 	if Input.is_action_just_pressed("weapon_03"):
 		weapon_selected = WEAPONS.BOMB

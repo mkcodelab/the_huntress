@@ -3,6 +3,7 @@ class_name Bow
 
 @onready var cooldown: Timer = $Cooldown
 @onready var arrow_spawn_point: Marker2D = $ArrowSpawnPoint
+@onready var bow_sound: AudioStreamPlayer = $BowSound
 
 var can_shoot = true
 var is_bow_drawn = false
@@ -61,13 +62,19 @@ func release(player: CharacterBody2D) -> void:
 		arrow_instance.set_as_top_level(true)
 
 		var vec = get_impulse_vector(calcAngleBetweenPlayer(player), arrow_force)
+		arrow_instance.force = arrow_force
 		arrow_instance.apply_central_impulse(-vec)
 		
-		arrow_force = min_arrow_force
 		is_bow_drawn = false
 		can_shoot = false
 		
 		cooldown.start()
+		
+		bow_sound.pitch_scale = arrow_force / 100
+		
+#		reset arrow force
+		arrow_force = min_arrow_force
+		bow_sound.play()
 	
 	
 func _on_cooldown_timeout() -> void:

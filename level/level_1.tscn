@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkvj4vqnmqwp0"]
+[gd_scene load_steps=11 format=3 uid="uid://dkvj4vqnmqwp0"]
 
 [ext_resource type="Texture2D" uid="uid://b3lee8tf2pmsa" path="res://assets/backgrounds/Starfield-7.png" id="1_2mkmi"]
 [ext_resource type="Texture2D" uid="uid://dr4n1hg73l0ek" path="res://assets/backgrounds/jungle_background___pixel_by_provellone_dekbrep-fullview.jpg" id="2_c8s7w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://doo8hn2phq8fw" path="res://object_scenes/plants/tree_2.tscn" id="6_jyosb"]
 [ext_resource type="PackedScene" uid="uid://0q0m4nlocwh" path="res://object_scenes/rocks/mossy_rock_01.tscn" id="7_se34i"]
 [ext_resource type="PackedScene" uid="uid://cgk03qhnou3l7" path="res://object_scenes/static_bodies/rocks/static_rock_01.tscn" id="8_63v17"]
+[ext_resource type="PackedScene" uid="uid://277pw70dgfog" path="res://object_scenes/static_bodies/target.tscn" id="10_eipu0"]
 
 [node name="Level1" type="Node"]
 
@@ -72,3 +73,6 @@ scale = Vector2(0.208393, 0.206407)
 [node name="Static_Rock_01" parent="Rocks" instance=ExtResource("8_63v17")]
 position = Vector2(2594, 1974)
 rotation = -1.48782
+
+[node name="Target" parent="." instance=ExtResource("10_eipu0")]
+position = Vector2(2883, 1149)
