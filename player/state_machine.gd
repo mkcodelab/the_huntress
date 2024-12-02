@@ -2,6 +2,7 @@ extends Node
 
 @onready var player: CharacterBody2D = $".."
 @onready var sprite: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var weapons_manager: Node2D = $"../WeaponsManager"
 
 var is_in_air = false
 var is_flying = false
@@ -34,9 +35,10 @@ func _process(delta: float) -> void:
 		is_running = false
 		
 	if Input.is_action_just_pressed("LMB"):
-		is_attacking = true
-		attackAnims.shuffle()
-		sprite.play(attackAnims[0])
+		if !weapons_manager.weapon_selected == weapons_manager.WEAPONS.BOW:
+			is_attacking = true
+			attackAnims.shuffle()
+			sprite.play(attackAnims[0])
 		
 
 func landing_check():

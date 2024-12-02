@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://ft8a0eq8l0av"]
+
+[ext_resource type="Texture2D" uid="uid://ch7y82i60ioda" path="res://assets/particles/bar_texture.png" id="1_ksbep"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_m0dby"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_m0dby")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bars" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -48.0
+offset_right = 93.0
+offset_bottom = -16.0
+grow_vertical = 0
+
+[node name="hp" type="TextureProgressBar" parent="Control/bars"]
+texture_filter = 1
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("1_ksbep")
+texture_over = ExtResource("1_ksbep")
+texture_progress = ExtResource("1_ksbep")
+tint_under = Color(0.326883, 3.39923e-07, 1.20327e-07, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.635294, 0, 0, 1)
+
+[node name="stamina" type="TextureProgressBar" parent="Control/bars"]
+texture_filter = 1
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("1_ksbep")
+texture_over = ExtResource("1_ksbep")
+texture_progress = ExtResource("1_ksbep")
+tint_under = Color(0.0431373, 0.176471, 0.172549, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0, 0.623529, 0.458824, 1)

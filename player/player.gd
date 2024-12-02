@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var VARS = $Variables
 @onready var state: Node = $StateMachine
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapons_manager: Node2D = $WeaponsManager
 
 #save velocity before landing (for camera shake and fall damage calculations)
 var last_fall_velocity = 0.0
@@ -16,25 +17,10 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
-#	Jump
-	if Input.is_action_pressed("jump"):
-		var jump_power = VARS.CURRENT_JUMP_VELOCITY
-		var max_power = VARS.MAX_JUMP_VELOCITY
-		if jump_power < max_power:
-			VARS.CURRENT_JUMP_VELOCITY += VARS.JUMP_POWER_BUILDUP * delta
+	jump(delta)
 	
-	if Input.is_action_just_released("jump"):
-		if is_on_floor():
-			velocity.y = -VARS.CURRENT_JUMP_VELOCITY
-		if is_on_wall():
-			velocity.y = -VARS.CURRENT_JUMP_VELOCITY
-
-
-	if Input.is_action_pressed("move_left"):
-		sprite.flip_h = true
-	if Input.is_action_just_pressed("move_right"):
-		sprite.flip_h = false
-		
+	turn_player_sprite()
+	
 	var direction := Input.get_axis("move_left", "move_right")
 	if !state.is_attacking:
 		if !state.is_in_air:
@@ -78,4 +64,31 @@ func _on_state_machine_has_landed_signal() -> void:
 #for camera shake and fall damage
 func calc_fall_impact():
 	return last_fall_velocity / 1000
+	
+func turn_player_sprite() -> void:
+	if Input.is_action_just_pressed("move_left"):
+		sprite.flip_h = true
+	if Input.is_action_just_pressed("move_right"):
+		sprite.flip_h = false
+	# if bow is selected, flip sprite to the side of the mouse cursor:
+	if weapons_manager.weapon_selected == weapons_manager.WEAPONS.BOW:
+		var screen_middle = (get_viewport().size.x) / 2
+		if get_viewport().get_mouse_position().x < screen_middle:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+	
+func jump(delta):
+	#	Jump
+	if Input.is_action_pressed("jump"):
+		var jump_power = VARS.CURRENT_JUMP_VELOCITY
+		var max_power = VARS.MAX_JUMP_VELOCITY
+		if jump_power < max_power:
+			VARS.CURRENT_JUMP_VELOCITY += VARS.JUMP_POWER_BUILDUP * delta
+	
+	if Input.is_action_just_released("jump"):
+		if is_on_floor():
+			velocity.y = -VARS.CURRENT_JUMP_VELOCITY
+		if is_on_wall():
+			velocity.y = -VARS.CURRENT_JUMP_VELOCITY
 	

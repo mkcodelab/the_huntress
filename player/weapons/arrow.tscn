@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://djx6pjr0pvjcm"]
+
+[ext_resource type="Script" path="res://player/weapons/arrow.gd" id="1_g3qe4"]
+[ext_resource type="Texture2D" uid="uid://dlxohffww6tk5" path="res://assets/spritesheets/player/weapons/arrow.png" id="2_lo2se"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d03t"]
+size = Vector2(45, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwbip"]
+
+[node name="Arrow" type="RigidBody2D"]
+script = ExtResource("1_g3qe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-29, 1)
+texture = ExtResource("2_lo2se")
+
+[node name="ArrowShape" type="CollisionShape2D" parent="."]
+position = Vector2(-36, 0.5)
+shape = SubResource("RectangleShape2D_5d03t")
+disabled = true
+
+[node name="Tip" type="Area2D" parent="."]
+
+[node name="TipShape" type="CollisionShape2D" parent="Tip"]
+shape = SubResource("CircleShape2D_gwbip")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="body_entered" from="Tip" to="." method="_on_tip_body_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

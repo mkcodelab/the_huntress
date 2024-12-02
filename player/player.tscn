@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://csjlbc0wgjaks"]
+[gd_scene load_steps=80 format=3 uid="uid://csjlbc0wgjaks"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ok1cc"]
 [ext_resource type="Texture2D" uid="uid://dymcf23cebpix" path="res://assets/spritesheets/player/Sprites/Run.png" id="2_863pv"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" path="res://player/dash.gd" id="19_2xu3s"]
 [ext_resource type="AudioStream" uid="uid://bhxsks302u3n0" path="res://assets/audio/swish_4.wav" id="20_fi74s"]
 [ext_resource type="Script" path="res://player/focus_time.gd" id="22_dap8v"]
+[ext_resource type="PackedScene" uid="uid://ccoha73w1wh38" path="res://player/weapons/bow.tscn" id="24_gk8cw"]
+[ext_resource type="Script" path="res://player/weapons_manager.gd" id="24_mbqs2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43qbf"]
 atlas = ExtResource("2_slcn5")
@@ -535,6 +537,12 @@ color = Color(0.415686, 1, 0.623529, 0.384314)
 [node name="FocusSound" type="AudioStreamPlayer" parent="FocusTime"]
 stream = ExtResource("14_kksle")
 pitch_scale = 0.2
+
+[node name="WeaponsManager" type="Node2D" parent="."]
+script = ExtResource("24_mbqs2")
+
+[node name="Bow" parent="WeaponsManager" instance=ExtResource("24_gk8cw")]
+position = Vector2(2, -13)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="has_landed_signal" from="StateMachine" to="." method="_on_state_machine_has_landed_signal"]
